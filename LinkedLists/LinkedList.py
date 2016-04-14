@@ -30,6 +30,6 @@ class List:
             while currLink:
                 print (currLink.value , '--> ' , end ='')
                 currLink = currLink.next
-        
+      
         
         
