@@ -24,12 +24,15 @@ class List:
         else:
             self.tail.next = newLink
             self.tail = newLink
+    def delNodeFront(self):
+        pass
     def printList(self):
         if not self.isEmpty():
             currLink = self.head
             while currLink:
                 print (currLink.value , '--> ' , end ='')
                 currLink = currLink.next
+
       
         
         
