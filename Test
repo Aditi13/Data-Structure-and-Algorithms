@@ -1,0 +1,92 @@
+class Link:
+    def __init__(self,value):
+        self.value = value
+        self.next = None
+class List:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+    def isEmpty(self):
+        return not self.head
+    def addNodeFront(self,value):
+        newLink = Link(value)
+        if self.isEmpty():
+            self.head = newLink
+            self.tail = newLink
+        else:
+            newLink.next = self.head
+            self.head = newLink
+    def addNodeLast(self,value):
+        newLink = Link(value)
+        if self.isEmpty():
+            self.head = newLink
+            self.tail = newLink
+        else:
+            self.tail.next = newLink
+            self.tail = newLink
+    def addNodeMid(self,value):
+        newLink = Link(value)
+        if self.isEmpty():
+            self.head = newLink
+            self.tail = newLink
+        else:
+            slow = self.head
+            fast = self.head
+            while fast.next and fast.next.next:
+                fast = fast.next.next
+                slow = slow.next
+            newLink.next = slow.next
+            slow.next = newLink
+    def delNodeFront(self):
+        if self.isEmpty():
+            return
+        elif not self.head.next:
+            val = self.head.value
+            self.tail = None
+            self.head = None
+        else:
+            val = self.head.value
+            self.head = self.head.next
+        return val
+    def delNodeLast(self):
+        if self.isEmpty():
+            return
+        elif not self.head.next:
+            val = self.head.value
+            self.head = None
+            self.tail = None
+        else:
+            curr = self.head
+            prev = curr
+            while not curr.next:
+                prev = curr
+                curr = curr.next
+            val = curr.value
+            prev.next = None
+            self.tail = prev
+        return val
+    def delNodeMid(self):
+        if self.isEmpty():
+            return
+        elif not self.head.next:
+            val = self.head.value
+            self.head = None
+            self.tail = None
+        else:
+            slow = self.head
+            fast = self.head
+            while fast.next and fast.next.next:
+                fast = fast.next.next
+                slow = slow.next
+            val = slow.value
+            slow.value = slow.next.value
+            slow.next = slow.next.next
+            return val
+    def printList(self):
+        if not self.isEmpty():
+            curr = self.head
+            while curr:
+                print (curr.value)
+                curr = curr.next
+    def reverseList(self):
+        pass
