@@ -1,4 +1,3 @@
-from types import new_class
 class Link:
     def __init__(self, value):
         self.value = value
@@ -55,7 +54,54 @@ class LinkedList:
                 slow_ptr = slow_ptr.next
             new_link.next = slow_ptr.next
             slow_ptr.next = new_link
-            
+    def del_link_front(self):
+        if self.is_empty():
+            return
+        elif self.get_length()==1:
+            link_value = self.head.value
+            self.head = None
+            self.tail = None
+        else:
+            link_value = self.head.value
+            self.head = self.head.next
+        return link_value
+    def del_link_last(self):
+        if self.is_empty():
+            return
+        elif self.get_length() == 1:
+            link_value = self.head
+            self.head = None
+            self.tail = None
+        else:
+            curr = self.head
+            prev = self.head
+            while curr.next:
+                prev = curr
+                curr = curr.next
+            link_value = curr.value
+            prev.next = None
+        return link_value
+    def del_link_middle(self):
+        if self.is_empty():
+            return
+        elif self.get_length() == 1:
+            link_value = self.head.value
+            self.head = None
+            self.tail = None
+        else:
+            slow_ptr = self.head
+            fast_ptr = self.head
+            while fast_ptr.next and fast_ptr.next.next:
+                fast_ptr = fast_ptr.next.next
+                slow_ptr = slow_ptr.next
+            link_value = slow_ptr.value
+            slow_ptr.value = slow_ptr.next.value
+            slow_ptr.next = slow_ptr.next.next
+        return link_value
+    
+
+        
+        
 
             
             
