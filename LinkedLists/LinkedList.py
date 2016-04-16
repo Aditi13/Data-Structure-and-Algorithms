@@ -6,8 +6,10 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        
     def is_empty(self):
         return not self.head
+    
     def get_length(self):
         length =  0
         if not self.is_empty():
@@ -25,6 +27,7 @@ class LinkedList:
                 curr = curr.next
         else:
             print ('List empty')
+            
     def add_link_front(self, value):
         new_link = Link(value)
         if self.is_empty():
@@ -33,6 +36,7 @@ class LinkedList:
         else:
             new_link.next = self.head
             self.head = new_link
+            
     def add_link_last(self, value):
         new_link = Link(value)
         if self.is_empty():
@@ -41,6 +45,7 @@ class LinkedList:
         else:
             self.tail.next = new_link
             self.tail = new_link
+            
     def add_link_middle(self, value):
         new_link = Link(value)
         if self.is_empty():
@@ -65,6 +70,7 @@ class LinkedList:
             link_value = self.head.value
             self.head = self.head.next
         return link_value
+    
     def del_link_last(self):
         if self.is_empty():
             return
@@ -81,6 +87,7 @@ class LinkedList:
             link_value = curr.value
             prev.next = None
         return link_value
+    
     def del_link_middle(self):
         if self.is_empty():
             return
@@ -100,9 +107,3 @@ class LinkedList:
         return link_value
     
 
-        
-        
-
-            
-            
-            
