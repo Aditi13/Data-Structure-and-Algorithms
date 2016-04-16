@@ -19,6 +19,7 @@ class LinkedList:
                 length +=1
             return length
         return length
+    
     def print_list (self):
         if not self.is_empty():
             curr = self.head
@@ -59,6 +60,7 @@ class LinkedList:
                 slow_ptr = slow_ptr.next
             new_link.next = slow_ptr.next
             slow_ptr.next = new_link
+            
     def del_link_front(self):
         if self.is_empty():
             return
