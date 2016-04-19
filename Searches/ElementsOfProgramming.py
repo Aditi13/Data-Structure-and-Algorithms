@@ -4,6 +4,7 @@ Created on Apr 18, 2016
 @author: Aditi
 '''
 
+
 def binary_search(arr, value):
     """
     iterative implementation of binary search
@@ -56,6 +57,8 @@ def first_occurance(arr, key):
             high_index = mid_index - 1
         else:
             low_index = mid_index + 1
+    if low_index > len(arr)-1:
+        return -1
     if arr[low_index] == key:
         return low_index
     return -1
@@ -72,6 +75,8 @@ def last_occurance (arr, key):
             low_index = mid_index + 1
         else:
             high_index = mid_index - 1
+    if high_index > len(arr)-1:
+        return -1
     if arr[high_index] == key:
         return high_index
     return -1
@@ -85,6 +90,42 @@ def count_occurances(arr, key):
     ind_last_occurance  = last_occurance(arr, key)
     return ind_last_occurance - ind_first_occurance + 1
 
+def index_equalto_value(arr, key):
+    """
+    find index A[i]=i
+    """
+    low_index = 0 
+    high_index = len(arr)-1
+    while low_index <= high_index:
+        mid_index = low_index + (high_index - low_index)//2
+        if arr[mid_index] == mid_index:
+            return mid_index
+        elif arr[mid_index] < mid_index:
+            low_index = mid_index + 1
+        else:
+            high_index = mid_index - 1
+    return -1
+
+def first_elem_greaterthan_k(arr, key):
+    """
+    find index of first element in arr greater than given key
+    else return -1
+    """
+    low_index = 0
+    high_index = len(arr) - 1
+    while low_index <= high_index:
+        mid_index = low_index + (high_index - low_index)//2
+        if arr[mid_index] > key:
+            high_index = mid_index - 1
+        else:
+            low_index = mid_index + 1
+    if low_index > len(arr)-1:
+        return -1
+    if arr[low_index] > key:
+        return low_index
+    return -1
+
+    
 
     
 
