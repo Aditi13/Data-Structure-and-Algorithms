@@ -125,7 +125,64 @@ def first_elem_greaterthan_k(arr, key):
         return low_index
     return -1
 
-    
+def smallest_elem_rotated_arr(arr):
+    """
+    find the smalles element in rotated arr
+    """
+    low_index = 0
+    high_index = len(arr)-1
+    while low_index <= high_index:
+        mid_index = low_index + (high_index - low_index)//2
+        if (arr[mid_index] > arr[high_index]):
+            mid_index = low_index + 1
+        else:
+            high_index = mid_index
+    return low_index
+
+
+def largest_integar_lessthan_k(k):
+    """
+    return the largest number s, such that s^2 <= k
+    """
+    low_bound = 0
+    high_bound = k
+    while low_bound < high_bound:
+        mid_value = low_bound + (high_bound - low_bound)//2
+        mid_sq = mid_value * mid_value
+        if mid_sq == k:
+            return mid_sq
+        elif mid_sq < k:
+            low_bound = mid_value
+        else:
+            high_bound = mid_value - 1
+        if high_bound * high_bound <= k:
+            return high_bound
+    return low_bound  
+
+# k = 16
+# print (largest_integar_lessthan_k(300))    
+
+
+def search_k_2D (arr, key):
+    """
+    search for key in a 2D space
+    """
+    row_count = len(arr)
+    col_count = len(arr[0])
+    curr_row = 0
+    curr_col = col_count -1
+    while curr_col >= 0 and curr_row < row_count:
+        elem = arr[curr_row][curr_col]
+        if key == elem:
+            return curr_row, curr_col
+        if key >  elem:
+            curr_row += 1
+        else:
+            curr_col -= 1
+    return -1
+
+          
+          
 
     
 
