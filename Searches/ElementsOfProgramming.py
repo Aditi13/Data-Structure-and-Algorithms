@@ -3,7 +3,7 @@ Created on Apr 18, 2016
 
 @author: Aditi
 '''
-
+import sys
 
 def binary_search(arr, value):
     """
@@ -181,8 +181,36 @@ def search_k_2D (arr, key):
             curr_col -= 1
     return -1
 
-          
-          
+def find_min_max_simul(arr):
+    """
+    find minimum and maximum in an arr simultaneosuly
+    """
+    if len(arr)<= 1:
+        return
+    min_value = sys.maxsize
+    max_value = - sys.maxsize
+    
+    for index in range (0,len(arr)-1,2):
+        print (index)
+        value_1 = arr[index]
+        value_2 = arr[index+1]
+        new_max = max(value_1 , value_2)
+        new_min = min (value_1 , value_2)
+        if new_max > max_value:
+            max_value = new_max
+        if new_min < min_value:
+            min_value = new_min
+   
+    if len(arr)%2 != 0 :
+        elem = arr[-1]
+        if elem > max_value:
+            max_value = elem
+        elif elem < min_value:
+            min_value = elem
+    return max_value , min_value
+
+
+    
 
     
 
