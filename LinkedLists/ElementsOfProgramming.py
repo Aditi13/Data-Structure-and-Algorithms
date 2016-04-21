@@ -81,6 +81,31 @@ def reverse_sublist(linked_list , value1 , value2):
         prev.next = next_link
     return linked_list
 
+def delete_node(linked_list, value):
+    if not linked_list.is_empty():
+        curr_link = linked_list.head
+        node_found = False
+        while curr_link:
+            if curr_link.value == value:
+                node_found = True
+                break
+            prev_link = curr_link
+            curr_link = curr_link.next
+        if not node_found:
+            return False
+        elif not curr_link.next:
+            linked_list.del_link_last()
+        elif not prev_link:
+            linked_list.del_link_front()
+        else:
+            prev_link.value = curr_link.value
+            prev_link.next = curr_link.next
+        return True
+    
+
+    
+            
+
         
         
         

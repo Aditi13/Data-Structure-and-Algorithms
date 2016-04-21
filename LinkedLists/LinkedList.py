@@ -2,7 +2,8 @@ class Link:
     def __init__(self, value):
         self.value = value
         self.next = None
-class LinkedList:
+        
+class List:
     def __init__(self):
         self.head = None
         self.tail = None
@@ -107,5 +108,7 @@ class LinkedList:
             slow_ptr.value = slow_ptr.next.value
             slow_ptr.next = slow_ptr.next.next
         return link_value
+
     
+          
 
