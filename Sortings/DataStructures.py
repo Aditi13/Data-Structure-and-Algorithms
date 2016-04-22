@@ -3,6 +3,7 @@ Created on Apr 21, 2016
 
 @author: Aditi
 '''
+from locale import currency
 
 def merge_sort(arr):
     """
@@ -56,5 +57,46 @@ def counting_sort(arr, k):
         count_arr [ arr[ind]] -= 1
     
     return output_arr
+
+
+def countint_votes(arr):
+    sorted_arr = merge_sort(arr)
+    max_votes = 0
+    curr_count = 1
+    curr_votes = 1
+    for index in range(0,len(sorted_arr)-1):
+        if sorted_arr[index] == sorted_arr[index+1]:
+            curr_count += 1
+            curr_votes += 1
+        else:
+            curr_count = 1
+            curr_votes = 1
+        if max_votes < curr_votes:
+            max_votes = curr_votes
+            winner = sorted_arr[index]
+    return winner
+
+def counting_sort_base(arr, n , exp):
+    output = [0 for elm in range(len(arr))]
+    count = [0 for elm in range(n+1)]
+    
+    for index in range(len(arr)):
+        count[(arr[index]//exp)%n] += 1
+    
+    for index in range (1,len(count)):
+        count[index] += count[index-1]
+        
+    for index in range(len(arr)):
+        val = count[(arr[index]//exp)%n] - 1
+        output [val] = arr[index]
+        count[(arr[index]//exp)%n] -= 1
+    return output
+arr = [1,2,5,2]
+arr =  (counting_sort_base(arr,5,1))
+print ((counting_sort_base(arr,5,5)))
+        
+
+            
+    
 
     
